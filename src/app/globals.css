@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
+@theme {
+  /* Aura Wellness color palette */
+  --color-cream: #fdfcfa;
+  --color-cream-dark: #f0ebe0;
+  --color-cream-border: #e8e0d5;
+  --color-sage: #7d9e7c;
+  --color-sage-light: #a8c4a7;
+  --color-sage-dark: #5a7a59;
+  --color-terracotta: #c17f5e;
+  --color-charcoal: #2c2c2c;
+  --color-warm-gray: #6b6762;
+  --color-warm-gray-light: #b5b2ae;
+  --color-overlay: rgba(20, 18, 16, 0.52);
+
+  /* Typography */
+  --font-heading: var(--font-playfair);
+  --font-sans: var(--font-dm-sans);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #fdfcfa;
+  --foreground: #2c2c2c;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Heading utility */
+.font-heading {
+  font-family: var(--font-playfair), Georgia, serif;
 }
