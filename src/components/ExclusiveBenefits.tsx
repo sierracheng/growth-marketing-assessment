@@ -1,18 +1,20 @@
+"use client";
+
 const PERKS = [
   {
     icon: "◎",
     title: "Lifetime Price Lock",
-    desc: "$19/month, guaranteed forever. Every member who joins after the 200 spots fill pays the standard rate — which rises to $29/month the moment this tier closes.",
+    desc: "$19/month, guaranteed forever. Every member who joins after the 200 spots fill pays the standard rate, which rises to $29/month the moment this tier closes.",
   },
   {
     icon: "✦",
     title: "Founding Member Circle",
-    desc: "Permanent access to an exclusive accountability pod with the original 200. This inner circle never opens to standard members — once it's closed, it's closed.",
+    desc: "Permanent access to an exclusive accountability pod with the original 200. This inner circle never opens to standard members. Once it's closed, it's closed.",
   },
   {
     icon: "◇",
     title: "Personal Intake Call",
-    desc: "A one-on-one session with a lead instructor to build a practice tailored to your life. Founding members only — not available at any price after the 200 spots are filled.",
+    desc: "A one-on-one session with a lead instructor to build a practice tailored to your life. Founding members only, not available at any price after the 200 spots are filled.",
   },
 ];
 
@@ -39,7 +41,7 @@ export default function ExclusiveBenefits() {
           {PERKS.map((perk) => (
             <div
               key={perk.title}
-              className="bg-cream border border-cream-border rounded-2xl p-7 flex flex-col gap-4 relative overflow-hidden"
+              className="group bg-cream border border-cream-border rounded-2xl p-7 flex flex-col gap-4 relative"
             >
               {/* Founding Only badge */}
               <div className="inline-flex items-center gap-1.5 self-start">
@@ -49,13 +51,33 @@ export default function ExclusiveBenefits() {
                 </span>
               </div>
 
-              {/* Icon */}
-              <div className="text-sage text-2xl">{perk.icon}</div>
+              {/* Icon — scales up on hover, contained within fixed wrapper */}
+              <div className="w-10 h-10 flex items-center justify-center">
+                <span className="text-sage text-2xl transition-transform duration-300 ease-out group-hover:scale-125 inline-block">
+                  {perk.icon}
+                </span>
+              </div>
 
               {/* Content */}
               <div>
-                <h3 className="font-heading text-lg text-charcoal mb-2">{perk.title}</h3>
-                <p className="text-warm-gray text-sm leading-relaxed">{perk.desc}</p>
+                <h3 className="font-heading text-lg text-charcoal mb-1 inline-flex flex-col">
+                  {perk.title}
+                  <span
+                    className="block h-px mt-1.5 bg-sage transition-all duration-400 ease-out"
+                    style={{ width: 0 }}
+                    ref={(el) => {
+                      if (!el) return;
+                      el.style.width = "0%";
+                      const card = el.closest(".group");
+                      if (!card) return;
+                      const onEnter = () => { el.style.width = "100%"; };
+                      const onLeave = () => { el.style.width = "0%"; };
+                      card.addEventListener("mouseenter", onEnter);
+                      card.addEventListener("mouseleave", onLeave);
+                    }}
+                  />
+                </h3>
+                <p className="text-warm-gray text-sm leading-relaxed mt-3">{perk.desc}</p>
               </div>
 
               {/* Footer */}

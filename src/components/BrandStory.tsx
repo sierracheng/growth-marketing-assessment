@@ -20,7 +20,7 @@ export default function BrandStory() {
         <div className="space-y-6 text-warm-gray text-base leading-[1.8]">
           <p>
             Modern life accelerated faster than our nervous systems were designed for.
-            Studio classes became a luxury of time, not money — and the result was a
+            Studio classes became a luxury of time, not money, and the result was a
             generation practising nothing at all.
           </p>
           <p>
@@ -29,7 +29,7 @@ export default function BrandStory() {
             Studio-grade instruction. Your timeline. Your space.
           </p>
           <p>
-            We did not build another content library. We built a practice —
+            We did not build another content library. We built a practice, 
             one that meets you exactly where you are, and grows with you.
           </p>
           <div className="pt-2 flex items-center gap-3">

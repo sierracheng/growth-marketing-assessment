@@ -54,18 +54,40 @@ export default function Features({ config }: FeaturesProps) {
           {features.items.map((item, index) => (
             <div
               key={item.title}
-              className="bg-cream p-8 sm:p-10 hover:bg-cream-dark transition-colors"
+              className="group bg-cream p-8 sm:p-10"
               style={{
                 opacity: revealed ? 1 : 0,
                 transform: revealed ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.6s ease ${index * 120}ms, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 120}ms`,
               }}
             >
-              <div className="text-sage text-2xl mb-5">{item.icon}</div>
-              <h3 className="font-heading text-xl text-charcoal mb-3">
+              {/* Icon scales up on hover — contained within fixed wrapper */}
+              <div className="w-10 h-10 flex items-center justify-center mb-5">
+                <span className="text-2xl transition-transform duration-300 ease-out group-hover:scale-125 inline-block">
+                  {item.icon}
+                </span>
+              </div>
+
+              {/* Title with an expanding sage underline on hover */}
+              <h3 className="font-heading text-xl text-charcoal mb-2 inline-flex flex-col">
                 {item.title}
+                <span
+                  className="block h-px mt-1.5 bg-sage transition-all duration-400 ease-out"
+                  style={{ width: 0 }}
+                  ref={(el) => {
+                    if (!el) return;
+                    el.style.width = "0%";
+                    const card = el.closest(".group");
+                    if (!card) return;
+                    const onEnter = () => { el.style.width = "100%"; };
+                    const onLeave = () => { el.style.width = "0%"; };
+                    card.addEventListener("mouseenter", onEnter);
+                    card.addEventListener("mouseleave", onLeave);
+                  }}
+                />
               </h3>
-              <p className="text-warm-gray text-sm leading-relaxed">
+
+              <p className="text-warm-gray text-sm leading-relaxed mt-3">
                 {item.description}
               </p>
             </div>

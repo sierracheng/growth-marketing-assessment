@@ -12,7 +12,7 @@ const CHAPTERS = [
     headline: "The 6am Room",
     prose: [
       "Before the world asks anything of you, there is a window. Twenty minutes, sometimes forty. The living room before the house wakes up.",
-      "Our movement library was built for that window — not for the athlete, but for the person who simply wants to feel at home in their body again. 500+ sessions, from 10-minute resets to 90-minute deep practices, taught by instructors who have spent their lives in this work.",
+      "Our movement library was built for that window, not for the athlete, but for the person who simply wants to feel at home in their body again. 500+ sessions, from 10-minute resets to 90-minute deep practices, taught by instructors who have spent their lives in this work.",
       "You do not need a studio. You need a mat, a little space, and the quiet conviction that showing up matters.",
     ],
     image:
@@ -27,7 +27,7 @@ const CHAPTERS = [
     headline: "When the Mind Goes Still",
     prose: [
       "The nervous system does not respond to willpower. It responds to breath.",
-      "Our daily breathwork rituals and guided meditations are not productivity tools — they are invitations. To slow down. To regulate. To find, in the space of a single exhale, a quality of stillness that no amount of efficiency can manufacture.",
+      "Our daily breathwork rituals and guided meditations are not productivity tools, they are invitations. To slow down. To regulate. To find, in the space of a single exhale, a quality of stillness that no amount of efficiency can manufacture.",
       "Three minutes in the morning. Ten at noon. A long, held silence before sleep. Each session is designed to meet you exactly where the day finds you.",
     ],
     image:
@@ -42,7 +42,7 @@ const CHAPTERS = [
     headline: "Practice Among People",
     prose: [
       "There is something a recorded session cannot give you: the experience of being witnessed.",
-      "Our live weekly classes are held in real time, with instructors who learn your name, notice your progress, and ask where you were last week. It is the closest thing to a neighbourhood studio — without the commute, the parking, the pre-class anxiety.",
+      "Our live weekly classes are held in real time, with instructors who learn your name, notice your progress, and ask where you were last week. It is the closest thing to a neighbourhood studio without the commute, the parking, the pre-class anxiety.",
       "The room fills quickly. That, in itself, says something.",
     ],
     image:
@@ -56,7 +56,7 @@ const CHAPTERS = [
     overline: "Wellness Journal",
     headline: "The Space Between Sessions",
     prose: [
-      "Progress is rarely visible in the moment. It lives in the accumulation of small, honest observations — a mood noted, an intention set, a day marked as good even when it was hard.",
+      "Progress is rarely visible in the moment. It lives in the accumulation of small, honest observations, a mood noted, an intention set, a day marked as good even when it was hard.",
       "The Aura journal is your private record of the practice. Not a tracker, not a streak counter. A space to reflect without audience, capture without performance.",
       "Over months, it becomes something remarkable: evidence of a person who chose, again and again, to show up.",
     ],
@@ -190,7 +190,7 @@ function EditorialBlock({
         <img
           src={chapter.image}
           alt={chapter.imageAlt}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent pointer-events-none" />
       </div>

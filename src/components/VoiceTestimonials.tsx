@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import WaveformBars from "./WaveformBars";
 
 // ── Testimonial data ──────────────────────────────────────────────────────────
 const TESTIMONIALS = [
@@ -30,35 +31,6 @@ const TESTIMONIALS = [
   },
 ];
 
-// ── Waveform ──────────────────────────────────────────────────────────────────
-function Waveform({ playing }: { playing: boolean }) {
-  const heights = [35, 55, 75, 60, 85, 50, 70, 40, 65, 80, 45, 60, 75, 50, 35];
-  return (
-    <div className="flex items-center gap-[3px]" style={{ height: 28 }} aria-hidden>
-      {heights.map((h, i) => (
-        <div
-          key={i}
-          className="rounded-full flex-shrink-0"
-          style={{
-            width: 2.5,
-            height: `${h}%`,
-            backgroundColor: playing
-              ? "var(--color-sage)"
-              : "var(--color-cream-border)",
-            transformOrigin: "center",
-            animationName: playing ? "waveBar" : "none",
-            animationDuration: `${0.5 + (i % 4) * 0.1}s`,
-            animationTimingFunction: "ease-in-out",
-            animationIterationCount: "infinite",
-            animationDirection: "alternate",
-            animationDelay: playing ? `${i * 0.06}s` : "0s",
-            transition: "background-color 0.3s ease",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
 
 // ── Progress bar ──────────────────────────────────────────────────────────────
 function ProgressBar({
@@ -305,7 +277,7 @@ export default function VoiceTestimonials() {
               {/* Waveform + progress + duration */}
               <div className="px-5 py-4 flex flex-col gap-2.5">
                 <div className="flex items-center justify-between gap-3">
-                  <Waveform playing={isPlaying} />
+                  <WaveformBars playing={isPlaying} bars={15} height={28} />
                   <span
                     className="text-warm-gray-light tabular-nums flex-shrink-0"
                     style={{ fontSize: "0.63rem", letterSpacing: "0.06em" }}

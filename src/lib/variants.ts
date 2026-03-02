@@ -67,7 +67,7 @@ const SHARED_FEATURES: FeatureItem[] = [
     icon: "✦",
     title: "Movement Library",
     description:
-      "500+ guided yoga, pilates, and flow sessions from world-class instructors — from 10-minute resets to 90-minute deep practices.",
+      "500+ guided yoga, pilates, and flow sessions from world-class instructors from 10-minute resets to 90-minute deep practices.",
   },
   {
     icon: "◎",
@@ -113,7 +113,7 @@ const SHARED_TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "I cancelled my gym membership the day I joined Aura. It gives me more than any studio could — and I practise in my living room at 6am.",
+      "I cancelled my gym membership the day I joined Aura. It gives me more than any studio could, and I practise in my living room at 6am.",
     name: "Sophia L.",
     role: "Mother of three, Melbourne",
     initials: "SL",
@@ -128,7 +128,7 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
     hero: {
       headline: "Reclaim Your Calm",
       subheadline:
-        "Studio-grade movement, mindfulness practices, and organic living — all in one place. Built for the modern pace of life.",
+        "Studio-grade movement, mindfulness practices, and organic living all in one place. Built for the modern pace of life.",
       ctaLabel: "Start Your Journey",
       bgType: "video",
       bgSrc:
@@ -141,7 +141,7 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
       sectionLabel: "Your Practice",
       headline: "Your Complete Wellness Practice",
       subheadline:
-        "Everything you need to move, breathe, and live well — curated by experts who have devoted their lives to it.",
+        "Everything you need to move, breathe, and live well curated by experts who have devoted their lives to it.",
       items: SHARED_FEATURES,
     },
     socialProof: {
@@ -182,7 +182,7 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
           icon: "✦",
           title: "Full Movement Library",
           description:
-            "500+ guided sessions — yoga, pilates, breathwork, and meditation. New content added weekly.",
+            "500+ guided sessions including yoga, pilates, breathwork, and meditation. New content added weekly.",
         },
         {
           icon: "◎",
@@ -232,7 +232,7 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
       sectionLabel: "What You'll Get",
       headline: "Built Around Real People, Not Perfect Ones",
       subheadline:
-        "Every tool, session, and ritual is designed for the life you actually have — not the one you wish you had.",
+        "Every tool, session, and ritual is designed for the life you actually have, not the one you wish you had.",
       items: SHARED_FEATURES,
     },
     socialProof: {
@@ -245,7 +245,7 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
       testimonials: [
         {
           quote:
-            "I was skeptical — I'd quit every app before. But seeing real members in the community grid made me feel like I could actually belong here.",
+            "I was skeptical. I'd quit every app before. But seeing real members in the community grid made me feel like I could actually belong here.",
           name: "Mia K.",
           role: "Nurse, Chicago",
           initials: "MK",

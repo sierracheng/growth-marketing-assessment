@@ -72,7 +72,7 @@ export default function AuthenticityBlock() {
               We cap founding membership at 200 so that every single member
               receives a personal intake call, guaranteed priority access to every
               live session, and a lead instructor who actually knows their name.
-              Past 200, that level of attention becomes impossible — so the tier
+              Past 200, that level of attention becomes impossible, so the tier
               closes, and the price increases permanently.
             </p>
 

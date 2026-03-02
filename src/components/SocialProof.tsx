@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { VariantConfig } from "@/lib/variants";
+import WaveformBars from "./WaveformBars";
 
 interface SocialProofProps {
   config: VariantConfig;
@@ -30,26 +31,6 @@ function parseStatValue(
   return null;
 }
 
-// ── Waveform bars rendered while a voice note plays ──────────────────────────
-function Waveform() {
-  return (
-    <div className="flex items-center gap-[2px] h-4" aria-hidden>
-      {[0, 1, 2, 3, 4].map((i) => (
-        <div
-          key={i}
-          className="w-0.5 bg-sage rounded-full"
-          style={{
-            height: "100%",
-            minHeight: 3,
-            transformOrigin: "bottom",
-            animation: "waveBar 0.7s ease-in-out infinite alternate",
-            animationDelay: `${i * 0.13}s`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
 
 export default function SocialProof({ config }: SocialProofProps) {
   const { stats, testimonials } = config.socialProof;
@@ -200,26 +181,16 @@ export default function SocialProof({ config }: SocialProofProps) {
                 {speechSupported && (
                   <button
                     onClick={() => handlePlay(i, t.quote)}
-                    className="self-start flex items-center gap-2 text-xs text-sage hover:text-sage-dark transition-colors"
+                    className="self-start flex items-center gap-2 hover:opacity-70 transition-opacity active:scale-95"
                     aria-label={isPlaying ? `Stop voice note from ${t.name}` : `Hear from ${t.name}`}
                   >
-                    {isPlaying ? (
-                      <>
-                        <Waveform />
-                        <span className="tracking-wide">Stop</span>
-                      </>
-                    ) : (
-                      <>
-                        {/* Play icon circle */}
-                        <span className="w-5 h-5 rounded-full border border-sage flex items-center justify-center flex-shrink-0">
-                          <span
-                            className="border-l-[6px] border-l-sage border-y-[4px] border-y-transparent ml-0.5"
-                            style={{ display: "inline-block", width: 0, height: 0 }}
-                          />
-                        </span>
-                        <span className="tracking-wide">Hear from {t.name.split(" ")[0]}</span>
-                      </>
-                    )}
+                    <WaveformBars playing={isPlaying} bars={12} height={20} />
+                    <span
+                      className="tracking-wide text-xs transition-colors duration-300"
+                      style={{ color: isPlaying ? "var(--color-sage)" : "rgba(107,140,120,0.9)" }}
+                    >
+                      {isPlaying ? "Stop" : `Click to Hear from ${t.name.split(" ")[0]}`}
+                    </span>
                   </button>
                 )}
 

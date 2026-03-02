@@ -187,7 +187,7 @@ export default function Variant2Hero({ config }: { config: VariantConfig }) {
               style={{ fontSize: "1.0625rem" }}
             >
               Real people. Real results. A community that keeps you accountable,
-              supported, and coming back — day after day.
+              supported, and coming back, day after day.
             </p>
 
             {/* Count-up stats */}

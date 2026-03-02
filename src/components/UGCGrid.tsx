@@ -110,7 +110,7 @@ export default function UGCGrid() {
             Real Members. Real Results.
           </h2>
           <p className="text-warm-gray text-lg max-w-md mx-auto">
-            No filters. No perfection. Just people showing up for themselves — and each other.
+            No filters. No perfection. Just people showing up for themselves and each other.
           </p>
         </div>
 
@@ -246,11 +246,31 @@ export default function UGCGrid() {
             {IDENTITY_ARCHETYPES.map((a) => (
               <div
                 key={a.title}
-                className="p-6 rounded-xl border border-cream-border bg-cream hover:bg-cream-dark transition-colors"
+                className="group p-6 rounded-xl border border-cream-border bg-cream"
               >
-                <div className="text-sage text-xl mb-4">{a.icon}</div>
-                <h4 className="font-heading text-base text-charcoal mb-2">{a.title}</h4>
-                <p className="text-warm-gray text-xs leading-relaxed">{a.desc}</p>
+                <div className="w-9 h-9 flex items-center justify-center mb-4">
+                  <span className="text-xl transition-transform duration-300 ease-out group-hover:scale-125 inline-block">
+                    {a.icon}
+                  </span>
+                </div>
+                <h4 className="font-heading text-base text-charcoal mb-1 inline-flex flex-col">
+                  {a.title}
+                  <span
+                    className="block h-px mt-1.5 bg-sage transition-all duration-400 ease-out"
+                    style={{ width: 0 }}
+                    ref={(el) => {
+                      if (!el) return;
+                      el.style.width = "0%";
+                      const card = el.closest(".group");
+                      if (!card) return;
+                      const onEnter = () => { el.style.width = "100%"; };
+                      const onLeave = () => { el.style.width = "0%"; };
+                      card.addEventListener("mouseenter", onEnter);
+                      card.addEventListener("mouseleave", onLeave);
+                    }}
+                  />
+                </h4>
+                <p className="text-warm-gray text-xs leading-relaxed mt-3">{a.desc}</p>
               </div>
             ))}
           </div>

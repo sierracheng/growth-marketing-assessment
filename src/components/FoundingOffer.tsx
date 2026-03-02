@@ -22,8 +22,8 @@ export default function FoundingOffer({ config }: FoundingOfferProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-  // Price count-up: 0 → 19 on scroll entry
-  const price = useMotionValue(0);
+  // Price count-down: 29 → 19 on scroll entry
+  const price = useMotionValue(29);
   const priceRounded = useTransform(price, (v) => Math.round(v));
 
   useEffect(() => {
@@ -121,11 +121,11 @@ export default function FoundingOffer({ config }: FoundingOfferProps) {
               $29/month
             </span>
             <motion.span
-              className="ml-auto text-xs font-medium px-3 py-1 rounded-full"
+              className="ml-auto text-xs font-semibold px-3 py-1 rounded-full"
               style={{
-                color: "rgba(255,255,255,0.85)",
-                backgroundColor: "rgba(255,255,255,0.10)",
-                border: "1px solid rgba(255,255,255,0.18)",
+                color: "#1a1710",
+                backgroundColor: "#e8c97a",
+                border: "none",
               }}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
