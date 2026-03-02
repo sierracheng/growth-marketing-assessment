@@ -66,10 +66,18 @@ This establishes our baseline conversion rate for a purely brand-driven narrativ
 **Methodology:** Scarcity Principle + FOMO
 
 **What changed:**
-We changed the layout to a short-form, urgency-driven structure featuring an exclusive "Founding Member" invitation. The primary variable is a dynamic capacity constraint (e.g., *"Only 200 Spots Remaining"*) and a direct CTA: *"Claim Your Invite"* — differing sharply from the control's long-form educational approach.
+We replaced the control's brand-storytelling structure with a full-funnel, urgency-layered page built around an exclusive "Founding Member" invitation. Key implementation details:
+
+- **UrgencyBanner** — fixed top bar displaying live remaining spot count (*"Only 127 founding spots left"*), persistent across scroll
+- **Hero** — full-bleed nature video background (dawn creek mist) with an animated spot counter counting down from 189 → 127, a "Live Availability" pulsing indicator, and a frosted-glass "Founding Member Invitation" badge. LiveActivity ticker pinned to the bottom of the hero shows real-time member join activity
+- **What You're Locking In** — three founding-only benefit cards (Lifetime Price Lock, Founding Member Circle, Personal Intake Call) with non-clickable hover animations
+- **Why Only 200?** — founder profile section (Maya Chen, Co-founder & CEO) with a personal editorial quote explaining the deliberate capacity cap, adding authenticity to the scarcity claim
+- **Founding Member Offer** — glassmorphism pricing card over a nature video background, with animated price count-down from $29 → $19, staggered benefit reveal, and a gold "Save 35%" badge
+- **FoundingQuotes** — three FOMO-reinforcing pull quotes from members
+- **Primary CTA:** *"Claim Your Founding Spot"*
 
 **Why this could improve conversion:**
-This leverages the Scarcity Principle and FOMO. For high-intent search traffic ready to make a decision, framing the offer as a limited-availability tier provides the immediate psychological push needed to close the subscription on the first visit.
+This leverages the Scarcity Principle and FOMO. For high-intent search traffic ready to make a decision, framing the offer as a limited-availability tier provides the immediate psychological push needed to close the subscription on the first visit. The price count-down ($29 → $19) and founder message add a layer of authenticity that softens the urgency without undermining it — critical for a mindfulness audience sensitive to aggressive sales tactics.
 
 **What we expect to learn:**
 We will learn whether exclusivity and urgency can override the need for deep aesthetic product education within this demographic. If it underperforms, we can conclude that aggressive scarcity tactics alienate a mindfulness-oriented audience — an important signal for all future campaign creative.
@@ -81,10 +89,18 @@ We will learn whether exclusivity and urgency can override the need for deep aes
 **Methodology:** Social Proof + Community Belonging
 
 **What changed:**
-We replaced the control's idealized, high-production assets with a grid-based UI featuring authentic User-Generated Content (UGC) and realistic member transformations. The messaging pivots from an aspirational lifestyle narrative to community belonging, with a community-focused CTA: *"Join the Community"*.
+We replaced the control's idealized, high-production assets with an editorial + UGC, community-layered structure. Rather than a single grid, the page layers multiple forms of social evidence across the full funnel:
+
+- **Hero** — community-focused headline (*"Join 10,000+ Members Already Thriving"*) with member count stats and a CTA framed around belonging rather than product features
+- **UGC Grid** — authentic photo and video grid of real members with names and cities, paired with count-up stats (10,000+ members, 41 countries, 2.3M sessions, 94% satisfaction)
+- **Who Joins Aura** — four identity archetype cards (The Burnt-Out Professional, The New Mum, etc.) designed to create immediate self-identification and lower psychological distance
+- **Editorial Feature Chapters** — four Z-pattern editorial sections (Movement, Breathwork & Meditation, Live Sessions, Wellness Journal) using long-form prose and editorial photography to build product understanding without sterile feature lists
+- **Voice Testimonials** — three member story cards with live wave animation and Web Speech API playback, making social proof audible and tangible
+- **Social Proof Stats** — animated count-up stats reinforcing scale and credibility
+- **Primary CTA:** *"Join the Community"*
 
 **Why this could improve conversion:**
-This relies on the Social Proof principle. For users arriving via comparison-based Google searches (e.g., *"Aura Wellness vs. Alo Moves"*), seeing relatable peers achieving tangible results lowers perceived risk and creates identity alignment — which can be more persuasive than polished brand imagery for an audience skeptical of over-produced marketing.
+This relies on the Social Proof principle. For users arriving via comparison-based Google searches (e.g., *"Aura Wellness vs. Alo Moves"*), seeing relatable peers achieving tangible results lowers perceived risk and creates identity alignment — which can be more persuasive than polished brand imagery for an audience skeptical of over-produced marketing. The identity archetype cards and voice testimonials add a depth of peer validation not achievable through static quotes alone.
 
 **What we expect to learn:**
 We will determine whether relatability and community validation are stronger conversion drivers than the premium brand positioning of the control. If it fails, it suggests our audience primarily seeks an aspirational escape rather than peer validation — which would guide us toward doubling down on brand prestige in future iterations.
@@ -96,5 +112,5 @@ We will determine whether relatability and community validation are stronger con
 | Variant | Methodology | CTA Copy | Layout Style | Primary Lever |
 |---|---|---|---|---|
 | `/control` | Aesthetic Halo Effect | "Start Your Journey" | Long-form, editorial | Brand trust + education |
-| `/variant-1` | Scarcity + FOMO | "Claim Your Invite" | Short-form, urgent | Limited availability |
-| `/variant-2` | Social Proof | "Join the Community" | Grid-based, UGC-forward | Peer validation |
+| `/variant-1` | Scarcity + FOMO | "Claim Your Founding Spot" | Full-funnel, urgency-layered | Limited availability + price anchoring |
+| `/variant-2` | Social Proof | "Join the Community" | Editorial + UGC, community-layered | Peer validation + identity alignment |

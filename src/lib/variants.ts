@@ -9,6 +9,7 @@ export interface HeroConfig {
   ctaLabel: string;
   bgType: "video" | "image" | "solid";
   bgSrc?: string;
+  bgFallback?: string;
   bgPoster?: string;
   overlay?: boolean;
   showSpotCounter?: boolean;
@@ -166,9 +167,9 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
       subheadline:
         "Lock in founding member pricing forever. Only 127 spots remain before the program closes.",
       ctaLabel: "Claim Your Founding Spot",
-      bgType: "image",
-      bgSrc:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80",
+      bgType: "video",
+      bgSrc: "https://assets.mixkit.co/videos/51662/51662-720.mp4",
+      bgFallback: "https://assets.mixkit.co/videos/41574/41574-720.mp4",
       overlay: true,
       showSpotCounter: true,
       spotsLeft: 127,
