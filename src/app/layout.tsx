@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${dmSans.variable}`}>
+      <body className={`${playfair.variable} ${dmSans.variable}`} suppressHydrationWarning>
         <PostHogProvider>{children}</PostHogProvider>
       </body>
     </html>

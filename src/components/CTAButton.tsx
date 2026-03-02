@@ -9,6 +9,7 @@ interface CTAButtonProps {
   referralCode: string;
   label: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export default function CTAButton({
@@ -16,6 +17,7 @@ export default function CTAButton({
   referralCode,
   label,
   className,
+  style,
 }: CTAButtonProps) {
   const fired = useRef(false);
 
@@ -37,6 +39,7 @@ export default function CTAButton({
       href={getSignupUrl(referralCode)}
       onClick={handleClick}
       className={className}
+      style={style}
     >
       {label}
     </a>

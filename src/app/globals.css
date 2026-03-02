@@ -13,6 +13,7 @@
   --color-warm-gray: #6b6762;
   --color-warm-gray-light: #b5b2ae;
   --color-overlay: rgba(20, 18, 16, 0.52);
+  --color-gold: #c9a84c;
 
   /* Typography */
   --font-heading: var(--font-playfair);
@@ -40,4 +41,21 @@ html {
 /* Heading utility */
 .font-heading {
   font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Voice note waveform bars */
+@keyframes waveBar {
+  0%   { transform: scaleY(0.15); }
+  100% { transform: scaleY(1); }
+}
+
+/* Hero background — inhale: zoom in + brighten. Exhale: settle back. */
+@keyframes heroFloat {
+  0%, 100% { transform: scale(1.0); }
+  50%       { transform: scale(1.18); }
+}
+
+@keyframes heroOverlayBreathe {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
 }

@@ -126,16 +126,15 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
     referralCode: "AURA-BRAND-CTRL",
     navCtaLabel: "Start Your Journey",
     hero: {
-      badge: "Premium Wellness Membership",
       headline: "Reclaim Your Calm",
       subheadline:
         "Studio-grade movement, mindfulness practices, and organic living — all in one place. Built for the modern pace of life.",
       ctaLabel: "Start Your Journey",
       bgType: "video",
       bgSrc:
-        "https://videos.pexels.com/video-files/3571264/3571264-hd_1920_1080_25fps.mp4",
+        "https://assets.mixkit.co/videos/48525/48525-720.mp4",
       bgPoster:
-        "https://images.pexels.com/videos/3571264/pictures/preview-0.jpg",
+        "https://assets.mixkit.co/videos/48525/48525-thumb-720-0.jpg",
       overlay: true,
     },
     features: {
@@ -150,9 +149,9 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
       testimonials: SHARED_TESTIMONIALS,
     },
     ctaSection: {
-      headline: "Begin Your Practice Today",
+      headline: "Your Practice Begins Today",
       subheadline:
-        "7-day free trial. No credit card required. Cancel anytime.",
+        "Seven days, free. No credit card required. Cancel whenever you like.",
       ctaLabel: "Start Your Journey",
     },
   },
@@ -210,10 +209,10 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
       testimonials: SHARED_TESTIMONIALS,
     },
     ctaSection: {
-      headline: "Only 127 Founding Spots Left",
+      headline: "127 Spots. Then the Door Closes.",
       subheadline:
-        "Lock in $19/month forever. Price rises to $29/month when founding spots are gone.",
-      ctaLabel: "Claim Your Spot — Before It's Gone",
+        "Founding pricing is $19/month, locked in for life. Once these spots are gone, this offer disappears permanently.",
+      ctaLabel: "Claim Your Founding Spot",
     },
   },
 
@@ -222,6 +221,7 @@ export const VARIANTS: Record<VariantId, VariantConfig> = {
     referralCode: "AURA-COMMUNITY-V2",
     navCtaLabel: "Join the Community",
     hero: {
+      badge: "10,000 Members & Growing",
       headline: "Join 10,000+ Members Already Thriving",
       subheadline:
         "Real people. Real results. A community that keeps you accountable, supported, and coming back.",

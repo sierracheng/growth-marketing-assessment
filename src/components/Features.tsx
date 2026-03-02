@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import type { VariantConfig } from "@/lib/variants";
 
 interface FeaturesProps {
@@ -6,6 +9,24 @@ interface FeaturesProps {
 
 export default function Features({ config }: FeaturesProps) {
   const { features } = config;
+  const [revealed, setRevealed] = useState(false);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section id="features" className="py-24 px-5 sm:px-8 bg-cream">
@@ -26,11 +47,19 @@ export default function Features({ config }: FeaturesProps) {
         </div>
 
         {/* Feature grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-cream-border rounded-2xl overflow-hidden border border-cream-border">
-          {features.items.map((item) => (
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-cream-border rounded-2xl overflow-hidden border border-cream-border"
+        >
+          {features.items.map((item, index) => (
             <div
               key={item.title}
               className="bg-cream p-8 sm:p-10 hover:bg-cream-dark transition-colors"
+              style={{
+                opacity: revealed ? 1 : 0,
+                transform: revealed ? "translateY(0)" : "translateY(20px)",
+                transition: `opacity 0.6s ease ${index * 120}ms, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 120}ms`,
+              }}
             >
               <div className="text-sage text-2xl mb-5">{item.icon}</div>
               <h3 className="font-heading text-xl text-charcoal mb-3">

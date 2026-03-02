@@ -1,8 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
+import BrandStory from "@/components/BrandStory";
+import EditorialFeatures from "@/components/EditorialFeatures";
 import SocialProof from "@/components/SocialProof";
-import CTASection from "@/components/CTA";
+import ImmersiveCTA from "@/components/ImmersiveCTA";
 import Footer from "@/components/Footer";
 import { VARIANTS } from "@/lib/variants";
 
@@ -20,9 +21,10 @@ export default function ControlPage() {
       <Navbar config={config} />
       <main>
         <Hero config={config} />
-        <Features config={config} />
+        <BrandStory />
+        <EditorialFeatures config={config} />
         <SocialProof config={config} />
-        <CTASection config={config} />
+        <ImmersiveCTA config={config} />
       </main>
       <Footer />
     </>

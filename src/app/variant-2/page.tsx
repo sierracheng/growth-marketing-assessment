@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import Variant2Hero from "@/components/Variant2Hero";
 import UGCGrid from "@/components/UGCGrid";
 import Features from "@/components/Features";
 import SocialProof from "@/components/SocialProof";
-import CTASection from "@/components/CTA";
+import ImmersiveCTA from "@/components/ImmersiveCTA";
 import Footer from "@/components/Footer";
 import { VARIANTS } from "@/lib/variants";
 
@@ -20,11 +20,11 @@ export default function Variant2Page() {
     <>
       <Navbar config={config} />
       <main>
-        <Hero config={config} />
+        <Variant2Hero config={config} />
         <UGCGrid />
         <Features config={config} />
         <SocialProof config={config} />
-        <CTASection config={config} />
+        <ImmersiveCTA config={config} />
       </main>
       <Footer />
     </>

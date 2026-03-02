@@ -1,9 +1,10 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import Variant1Hero from "@/components/Variant1Hero";
+import ExclusiveBenefits from "@/components/ExclusiveBenefits";
+import AuthenticityBlock from "@/components/AuthenticityBlock";
 import FoundingOffer from "@/components/FoundingOffer";
-import Features from "@/components/Features";
-import SocialProof from "@/components/SocialProof";
-import CTASection from "@/components/CTA";
+import FoundingQuotes from "@/components/FoundingQuotes";
+import Variant1CTA from "@/components/Variant1CTA";
 import Footer from "@/components/Footer";
 import UrgencyBanner from "@/components/UrgencyBanner";
 import { VARIANTS } from "@/lib/variants";
@@ -21,13 +22,14 @@ export default function Variant1Page() {
   return (
     <>
       <UrgencyBanner spotsLeft={SPOTS_LEFT} />
-      <Navbar config={config} topOffset={38} />
+      <Navbar config={config} topOffset={36} />
       <main>
-        <Hero config={config} />
+        <Variant1Hero config={config} />
+        <ExclusiveBenefits />
+        <AuthenticityBlock />
         <FoundingOffer config={config} />
-        <Features config={config} />
-        <SocialProof config={config} />
-        <CTASection config={config} />
+        <FoundingQuotes />
+        <Variant1CTA config={config} />
       </main>
       <Footer />
     </>

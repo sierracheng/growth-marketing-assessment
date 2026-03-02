@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CTAButton from "./CTAButton";
+import { getSignupUrl } from "@/lib/variants";
 import type { VariantConfig } from "@/lib/variants";
 
 const navLinks = [
@@ -17,6 +18,13 @@ interface NavbarProps {
 
 export default function Navbar({ config, topOffset = 0 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.3);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
@@ -45,7 +53,7 @@ export default function Navbar({ config, topOffset = 0 }: NavbarProps) {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href={`https://ads.axon.ai/auth/signup?referralCode=${config.referralCode}`}
+            href={getSignupUrl(config.referralCode)}
             className="text-sm text-warm-gray hover:text-charcoal transition-colors"
           >
             Sign in
@@ -54,7 +62,11 @@ export default function Navbar({ config, topOffset = 0 }: NavbarProps) {
             variantId={config.id}
             referralCode={config.referralCode}
             label={config.navCtaLabel}
-            className="text-sm bg-charcoal text-cream px-5 py-2 rounded-full hover:bg-charcoal/80 transition-colors tracking-wide"
+            className={`text-sm px-5 py-2 rounded-full tracking-wide transition-all duration-500 ${
+              scrolled
+                ? "bg-charcoal text-cream hover:bg-charcoal/80"
+                : "border border-charcoal/25 text-charcoal hover:border-charcoal/50"
+            }`}
           />
         </div>
 
