@@ -20,10 +20,20 @@ export default function PostHogProvider({
   const pathname = usePathname();
 
   useEffect(() => {
-    initPostHog();
+    // Capture initial pageview inside `loaded` callback — guarantees PostHog is ready
+    initPostHog((ph) => {
+      const variant = getVariantFromPath(pathname);
+      ph.capture("$pageview", {
+        path: pathname,
+        ...(variant && { variant }),
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
+    // Subsequent client-side navigations only
+    if (!posthog.__loaded) return;
     const variant = getVariantFromPath(pathname);
     posthog.capture("$pageview", {
       path: pathname,
