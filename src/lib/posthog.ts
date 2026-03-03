@@ -1,6 +1,6 @@
 import posthog from "posthog-js";
 
-export function initPostHog(onLoaded?: (ph: typeof posthog) => void) {
+export function initPostHog(onLoaded?: () => void) {
   const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
   const host =
     process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com";
@@ -15,7 +15,7 @@ export function initPostHog(onLoaded?: (ph: typeof posthog) => void) {
       if (process.env.NODE_ENV === "development") {
         ph.debug();
       }
-      onLoaded?.(ph);
+      onLoaded?.();
     },
   });
 }

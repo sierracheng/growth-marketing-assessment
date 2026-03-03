@@ -21,9 +21,9 @@ export default function PostHogProvider({
 
   useEffect(() => {
     // Capture initial pageview inside `loaded` callback — guarantees PostHog is ready
-    initPostHog((ph) => {
+    initPostHog(() => {
       const variant = getVariantFromPath(pathname);
-      ph.capture("$pageview", {
+      posthog.capture("$pageview", {
         path: pathname,
         ...(variant && { variant }),
       });
