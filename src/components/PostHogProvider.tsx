@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { initPostHog } from "@/lib/posthog";
 import posthog from "posthog-js";
@@ -18,21 +18,27 @@ export default function PostHogProvider({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const pathnameRef = useRef(pathname);
+
+  // Keep ref pointing to latest pathname so the loaded callback captures the
+  // correct route even after the / → /variant redirect fires before PostHog loads.
+  useEffect(() => {
+    pathnameRef.current = pathname;
+  }, [pathname]);
 
   useEffect(() => {
-    // Capture initial pageview inside `loaded` callback — guarantees PostHog is ready
     initPostHog(() => {
-      const variant = getVariantFromPath(pathname);
+      const currentPath = pathnameRef.current;
+      const variant = getVariantFromPath(currentPath);
       posthog.capture("$pageview", {
-        path: pathname,
+        path: currentPath,
         ...(variant && { variant }),
       });
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    // Subsequent client-side navigations only
+    // Subsequent client-side navigations (layout persists across routes)
     if (!posthog.__loaded) return;
     const variant = getVariantFromPath(pathname);
     posthog.capture("$pageview", {

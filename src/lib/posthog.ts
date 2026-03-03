@@ -9,7 +9,7 @@ export function initPostHog(onLoaded?: () => void) {
 
   posthog.init(key, {
     api_host: host,
-    person_profiles: "identified_only",
+    person_profiles: "always",
     capture_pageview: false, // manual pageview control
     loaded: (ph) => {
       if (process.env.NODE_ENV === "development") {
