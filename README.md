@@ -7,81 +7,92 @@ This repository contains the technical implementation for the Aura Wellness land
   - [Control (Baseline)](https://growth-marketing-assessment.vercel.app/control)
   - [Variant 1 (Scarcity)](https://growth-marketing-assessment.vercel.app/variant-1)
   - [Variant 2 (Social Proof)](https://growth-marketing-assessment.vercel.app/variant-2)
-- **Strategy & Hypotheses:** [Read the Hypotheses Document](./HYPOTHESES.md)
+- **Strategy & Hypotheses:** [Read the Hypothesis Document](./HYPOTHESIS.md)
 - **Loom Videos:**
-  - [Strategy Walkthrough (3 min)](#) \* [Technical Architecture Walkthrough (3 min)](#) ## 🛠 Tech Stack
+  - [Strategy Walkthrough (3 min)](#)
+  - [Technical Architecture Walkthrough (3 min)](#)
 
-- **Framework:** Next.js 15 (App Router)
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS
+- **Styling:** Tailwind CSS v4
 - **Animation:** Framer Motion
 - **Analytics & A/B Testing:** PostHog
+- **Fonts:** Playfair Display (headings), DM Sans (body)
 
 ## Architectural Highlights
 
 To satisfy the requirement of maintaining a single core layout/system without duplicating code, this project utilizes a **Centralized Configuration Architecture**.
 
-1. **`config/variantConfig.ts`**: The single source of truth. It maps the URL routes (`/control`, `/variant-1`, `/variant-2`) to their specific copy, media assets, layout themes, CTA labels, and deterministic referral codes.
-2. **Polymorphic Components**: Global components (e.g., `<HeroSection />`, `<SocialProof />`) accept data from the config and dynamically adjust their layout, styling (e.g., Dark Mode vs. Light Mode), and content.
-3. **Flicker-Free Analytics**: PostHog is integrated to track the `signed_up` event safely.
+1. **`src/lib/variants.ts`**: The single source of truth. It maps the URL routes (`/control`, `/variant-1`, `/variant-2`) to their specific copy, media assets, CTA labels, and deterministic referral codes. Shared constants (features, base stats, testimonials) are defined once and referenced across variants.
+2. **Polymorphic Components**: Shared components (e.g., `<Features />`, `<SocialProof />`) accept a `config` prop and render the correct content for the current route. No variant-specific logic lives inside shared components.
+3. **Variant-Specific Components**: Where a variant requires a structurally different section — not just different copy — a dedicated component is used (`<UrgencyBanner />`, `<FoundingOffer />`, `<UGCGrid />`, `<Variant1Hero />`). These are composed at the page level, keeping shared components clean.
+4. **Variant Assignment**: The root `/` route reads or assigns a variant via `localStorage`, then immediately redirects. This keeps the experiment stable across page refreshes without server-side cookies.
 
 ## PostHog Tracking & CTA Logic
 
 The primary conversion metric (`signed_up`) is handled by a custom `<CTAButton />` wrapper that ensures absolute data integrity:
 
-- **Duplicate Prevention:** Disables the button immediately upon the first click.
-- **Race-Condition Safety:** Wraps the PostHog `capture` event in a Promise with a 500ms timeout. This guarantees the event fires _before_ the redirect without trapping the user if the analytics script is blocked by an adblocker.
+- **Duplicate Prevention:** A `useRef` boolean flag ensures the PostHog event fires exactly once per click, even if the user clicks multiple times before the redirect completes.
+- **Race-Condition Safety:** A 300ms `setTimeout` delay gives PostHog time to flush the event before `window.location.href` triggers the redirect.
 - **Deterministic Routing:** Appends the exact `?referralCode=` defined in the variant config to the final redirect URL (`https://ads.axon.ai/auth/signup`).
+- **Pageview Tracking:** The initial `$pageview` event is captured inside PostHog's `loaded` callback to guarantee the SDK is fully initialised before any event fires.
 
 ## Local Setup & Development
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/your-username/aura-wellness-ab-test.git](https://github.com/your-username/aura-wellness-ab-test.git)
-   cd aura-wellness-ab-test
+   git clone https://github.com/sierracheng/growth-marketing-assessment.git
+   cd growth-marketing-assessment
    ```
-2. **Install Depedencies:**
-   ```bash
-    npm install
-    # or
-    yarn install
-    # or
-    pnpm install
-   ```
-3. **Configure Environment Variables:**
-   Create a .env.local file in the root directory and add your PostHog keys:
 
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables:**
+
+   Create a `.env.local` file in the root directory:
    ```bash
    NEXT_PUBLIC_POSTHOG_KEY=your_posthog_project_api_key
-   NEXT_PUBLIC_POSTHOG_HOST=[https://app.posthog.com](https://app.posthog.com)
+   NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
    ```
 
-4. **Getting Started:**
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   Open [http://localhost:3000](http://localhost:3000) to see the result. The root route will randomly assign a variant and redirect.
 
 ## Key Directory Structure
+
+```
+src/
 ├── app/
-│   ├── control/page.tsx       # Fetches control config & renders shared layout
-│   ├── variant-1/page.tsx     # Fetches variant-1 config & renders shared layout
-│   └── variant-2/page.tsx     # Fetches variant-2 config & renders shared layout
+│   ├── page.tsx              # Variant assignment + redirect
+│   ├── control/page.tsx      # Control variant page
+│   ├── variant-1/page.tsx    # Variant 1 page
+│   └── variant-2/page.tsx    # Variant 2 page
 ├── components/
-│   ├── shared/                # 100% Reusable UI components (Hero, Features, etc.)
-│   └── tracking/              # PostHog provider and CTA button logic
-├── config/
-│   └── variantConfig.ts       # Centralized routing and content configuration
-└── HYPOTHESES.md              # Psychological methodology and experiment design
+│   ├── CTAButton.tsx         # Tracked CTA with dedup logic
+│   ├── PostHogProvider.tsx   # PostHog initialisation + pageview tracking
+│   ├── Navbar.tsx            # Shared navigation
+│   ├── Hero.tsx              # Control hero
+│   ├── Variant1Hero.tsx      # Variant 1 hero (scarcity/FOMO)
+│   ├── Variant2Hero.tsx      # Variant 2 hero (social proof)
+│   ├── Features.tsx          # Shared feature grid
+│   ├── SocialProof.tsx       # Shared testimonials + stats
+│   ├── UrgencyBanner.tsx     # Variant 1 fixed top banner
+│   ├── FoundingOffer.tsx     # Variant 1 pricing card
+│   ├── UGCGrid.tsx           # Variant 2 community photo/video grid
+│   ├── EditorialFeatures.tsx # Shared Z-pattern editorial sections
+│   ├── VoiceTestimonials.tsx # Variant 2 Web Speech API testimonials
+│   └── Footer.tsx
+└── lib/
+    ├── variants.ts           # Centralized variant configuration (single source of truth)
+    ├── experiment.ts         # localStorage-based variant assignment
+    └── posthog.ts            # PostHog init + captureSignup helper
+```
