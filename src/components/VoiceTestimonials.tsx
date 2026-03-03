@@ -188,7 +188,7 @@ export default function VoiceTestimonials() {
               ref={(el) => { cardRefs.current[i] = el; }}
               className="flex-shrink-0 snap-center rounded-2xl border border-cream-border flex flex-col cursor-pointer select-none"
               style={{
-                width: "clamp(268px, 30vw, 320px)",
+                width: "clamp(240px, 85vw, 320px)",
                 backgroundColor: isPlaying ? "var(--color-cream-dark)" : "white",
                 opacity: isDimmed ? 0.42 : 1,
                 transform: isPlaying ? "scale(1.035)" : "scale(1)",

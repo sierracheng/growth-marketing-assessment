@@ -111,7 +111,7 @@ function EditorialBlock({
       }}
     >
       {/* Ghosted chapter number — decorative only */}
-      <div className="relative mb-7">
+      <div className="relative mb-7 overflow-hidden">
         <span
           className="absolute font-heading leading-none text-sage/[0.07] select-none pointer-events-none tabular-nums"
           style={{ fontSize: "7rem", top: "-3.5rem", left: "-0.5rem" }}

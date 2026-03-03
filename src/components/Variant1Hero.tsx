@@ -28,7 +28,7 @@ export default function Variant1Hero({ config }: { config: VariantConfig }) {
   }, [count, spotsEnd]);
 
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center px-5 sm:px-8 pt-28 pb-0 text-center overflow-hidden bg-cream">
+    <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-5 sm:px-8 pt-24 sm:pt-28 pb-0 text-center overflow-hidden bg-cream">
 
       {/* ── Background video ──────────────────────────────────────────── */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}

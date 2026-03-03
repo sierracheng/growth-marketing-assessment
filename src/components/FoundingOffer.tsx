@@ -35,7 +35,7 @@ export default function FoundingOffer({ config }: FoundingOfferProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 px-5 sm:px-8 overflow-hidden"
+      className="relative py-16 sm:py-24 px-5 sm:px-8 overflow-hidden"
     >
       {/* ── Video background ─────────────────────────────────────────── */}
       {/* 43605 — slow aerial glide over a calm river through forest     */}
@@ -83,7 +83,7 @@ export default function FoundingOffer({ config }: FoundingOfferProps) {
         >
           {/* Header */}
           <motion.div
-            className="px-8 py-7"
+            className="px-5 sm:px-8 py-5 sm:py-7"
             style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -102,7 +102,7 @@ export default function FoundingOffer({ config }: FoundingOfferProps) {
 
           {/* Pricing — animated count-up */}
           <motion.div
-            className="px-8 py-6 flex items-baseline gap-3"
+            className="px-5 sm:px-8 py-4 sm:py-6 flex items-baseline gap-3"
             style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -136,7 +136,7 @@ export default function FoundingOffer({ config }: FoundingOfferProps) {
           </motion.div>
 
           {/* Benefits — staggered reveal */}
-          <div className="px-8 py-7">
+          <div className="px-5 sm:px-8 py-5 sm:py-7">
             <ul className="space-y-3.5">
               {benefits.map((benefit, i) => (
                 <motion.li
@@ -172,7 +172,7 @@ export default function FoundingOffer({ config }: FoundingOfferProps) {
 
           {/* CTA */}
           <motion.div
-            className="px-8 py-7"
+            className="px-5 sm:px-8 py-5 sm:py-7"
             style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

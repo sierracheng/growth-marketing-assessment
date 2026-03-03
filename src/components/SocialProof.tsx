@@ -115,7 +115,7 @@ export default function SocialProof({ config }: SocialProofProps) {
         {/* ── Stats ─────────────────────────────────────────────────── */}
         <div
           ref={statsRef}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-6"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-12 mb-6"
         >
           {stats.map((stat, i) => {
             const cfg = statConfigs[i];
@@ -123,7 +123,7 @@ export default function SocialProof({ config }: SocialProofProps) {
             return (
               <div key={stat.label} className="text-center flex flex-col items-center">
                 <div className="w-7 h-px bg-sage mb-5" />
-                <div className="font-heading text-5xl sm:text-6xl text-charcoal leading-none mb-3 tabular-nums">
+                <div className="font-heading text-4xl sm:text-5xl lg:text-6xl text-charcoal leading-none mb-3 tabular-nums">
                   {display}
                 </div>
                 <div className="text-warm-gray text-xs tracking-[0.14em] uppercase leading-relaxed">

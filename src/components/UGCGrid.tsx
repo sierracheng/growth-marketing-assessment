@@ -115,7 +115,7 @@ export default function UGCGrid() {
         </div>
 
         {/* Count-up stats bar */}
-        <div ref={statsRef} className="flex flex-wrap justify-center gap-10 mb-12 text-center">
+        <div ref={statsRef} className="flex flex-wrap justify-center gap-6 sm:gap-10 mb-12 text-center">
           {STATS.map((stat, i) => (
             <div key={stat.label}>
               <div className="w-6 h-px bg-sage mx-auto mb-3" />
@@ -149,7 +149,7 @@ export default function UGCGrid() {
         {/* ── Desktop: Bento Box grid ───────────────────────────────── */}
         <div
           className="hidden sm:grid grid-cols-3 gap-3"
-          style={{ gridTemplateRows: "repeat(4, 180px)" }}
+          style={{ gridTemplateRows: "repeat(4, clamp(150px, 18vw, 220px))" }}
         >
           {BENTO_CELLS.map((cell, i) => {
             const sharedStyle: React.CSSProperties = {

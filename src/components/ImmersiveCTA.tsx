@@ -30,7 +30,7 @@ export default function ImmersiveCTA({ config }: ImmersiveCTAProps) {
     <section
       ref={ref}
       id="cta"
-      className="relative flex flex-col items-center justify-center min-h-screen px-5 sm:px-8 bg-cream overflow-hidden"
+      className="relative flex flex-col items-center justify-center min-h-[100svh] px-5 sm:px-8 bg-cream overflow-hidden"
     >
       {/* Ambient radial wash */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-sage/[0.05] pointer-events-none" />
@@ -44,7 +44,7 @@ export default function ImmersiveCTA({ config }: ImmersiveCTAProps) {
         }}
       >
         {/* Opening rule */}
-        <div className="w-10 h-px bg-cream-border mx-auto mb-16" />
+        <div className="w-10 h-px bg-cream-border mx-auto mb-10 sm:mb-16" />
 
         {/* Overline */}
         <p
@@ -76,7 +76,7 @@ export default function ImmersiveCTA({ config }: ImmersiveCTAProps) {
             variantId={id}
             referralCode={referralCode}
             label={ctaSection.ctaLabel}
-            className="inline-block px-12 py-4 rounded-full bg-charcoal text-cream text-sm font-medium tracking-wide hover:bg-charcoal/80 transition-colors"
+            className="inline-block px-8 py-3.5 sm:px-12 sm:py-4 rounded-full bg-charcoal text-cream text-sm font-medium tracking-wide hover:bg-charcoal/80 transition-colors"
           />
           <p
             className="text-warm-gray-light uppercase tracking-[0.1em]"
@@ -87,7 +87,7 @@ export default function ImmersiveCTA({ config }: ImmersiveCTAProps) {
         </div>
 
         {/* Closing rule */}
-        <div className="w-10 h-px bg-cream-border mx-auto mt-16" />
+        <div className="w-10 h-px bg-cream-border mx-auto mt-10 sm:mt-16" />
       </div>
     </section>
   );
