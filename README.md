@@ -1,5 +1,4 @@
-# Aura Wellness — CRO & A/B Testing Architecture
-
+# Aura Wellness
 This repository contains the technical implementation for the Aura Wellness landing page A/B test. It features three distinct variants built on a single, strictly DRY Next.js architecture, utilizing a centralized configuration pattern to render polymorphic components.
 
 ## Project Deliverables
@@ -76,13 +75,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Key Directory Structure
-
 ├── app/
-│ ├── control/page.tsx # Fetches control config & renders shared layout
-│ ├── variant-1/page.tsx # Fetches variant-1 config & renders shared layout
-│ └── variant-2/page.tsx # Fetches variant-2 config & renders shared layout
+│   ├── control/page.tsx       # Fetches control config & renders shared layout
+│   ├── variant-1/page.tsx     # Fetches variant-1 config & renders shared layout
+│   └── variant-2/page.tsx     # Fetches variant-2 config & renders shared layout
 ├── components/
-│ ├── shared/ # 100% Reusable UI components (Hero, Features, etc.)
-│ └── tracking/ # PostHog provider and CTA button logic
-└── config/
-└── variantConfig.ts # Centralized routing and content configuration
+│   ├── shared/                # 100% Reusable UI components (Hero, Features, etc.)
+│   └── tracking/              # PostHog provider and CTA button logic
+├── config/
+│   └── variantConfig.ts       # Centralized routing and content configuration
+└── HYPOTHESES.md              # Psychological methodology and experiment design
