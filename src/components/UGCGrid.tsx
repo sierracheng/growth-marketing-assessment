@@ -128,7 +128,7 @@ export default function UGCGrid() {
         {/* ── Mobile: simple 2-col grid ─────────────────────────────── */}
         <div className="sm:hidden grid grid-cols-2 gap-3">
           {members.map((m) => (
-            <div key={m.name} className="relative aspect-square rounded-2xl overflow-hidden group">
+            <div key={m.name} className="relative aspect-square rounded-2xl overflow-hidden group bg-cream-dark">
               <video
                 src={m.video}
                 poster={m.photo}
@@ -136,7 +136,7 @@ export default function UGCGrid() {
                 muted
                 loop
                 playsInline
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute bottom-2 left-2 bg-cream/85 backdrop-blur-sm rounded-full px-2.5 py-1 flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-sage flex-shrink-0" />
@@ -161,7 +161,7 @@ export default function UGCGrid() {
               return (
                 <div
                   key={i}
-                  className="relative rounded-2xl overflow-hidden group"
+                  className="relative rounded-2xl overflow-hidden group bg-cream-dark"
                   style={sharedStyle}
                 >
                   <video
@@ -171,7 +171,7 @@ export default function UGCGrid() {
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute bottom-3 left-3 bg-cream/80 group-hover:bg-cream/95 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-2 transition-colors duration-300">
                     <span className="w-2 h-2 rounded-full bg-sage flex-shrink-0" />

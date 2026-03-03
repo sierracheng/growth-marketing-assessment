@@ -151,8 +151,8 @@ export default function Variant2Hero({ config }: { config: VariantConfig }) {
         }
       `}</style>
 
-      <section className="min-h-screen bg-white px-5 sm:px-8 pt-20 pb-16 overflow-x-clip">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20 min-h-[calc(100vh-5rem)]">
+      <section className="bg-white px-5 sm:px-8 pt-20 pb-16 lg:min-h-[100svh] overflow-x-clip">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20 lg:min-h-[calc(100vh-5rem)]">
 
           {/* ── Left: copy ──────────────────────────────────────────────── */}
           <div className="flex-1 lg:max-w-[480px]">
@@ -222,7 +222,7 @@ export default function Variant2Hero({ config }: { config: VariantConfig }) {
           </div>
 
           {/* ── Right: masonry grid + notification bubbles ──────────────── */}
-          <div className="relative flex-1 hidden lg:block select-none">
+          <div className="relative w-full lg:flex-1 select-none">
 
             {/* 2-column staggered masonry */}
             <div className="grid grid-cols-2 gap-3">
@@ -246,7 +246,7 @@ export default function Variant2Hero({ config }: { config: VariantConfig }) {
                 </div>
               </div>
               {/* Column 2 — offset for stagger */}
-              <div className="flex flex-col gap-3 mt-10">
+              <div className="flex flex-col gap-3 mt-4 sm:mt-6 lg:mt-10">
                 <div className="aspect-square rounded-2xl overflow-hidden bg-cream-dark">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -266,10 +266,12 @@ export default function Variant2Hero({ config }: { config: VariantConfig }) {
               </div>
             </div>
 
-            {/* Floating notification bubbles */}
-            {BUBBLES.map((bubble) => (
-              <NotificationBubble key={bubble.name} {...bubble} />
-            ))}
+            {/* Floating notification bubbles — desktop only (overflow viewport on mobile) */}
+            <div className="hidden lg:block">
+              {BUBBLES.map((bubble) => (
+                <NotificationBubble key={bubble.name} {...bubble} />
+              ))}
+            </div>
           </div>
 
         </div>
