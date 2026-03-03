@@ -10,8 +10,8 @@ This repository contains the technical implementation for the Aura Wellness land
 - **Strategy & Hypotheses:** [Read the Hypothesis Document](./HYPOTHESIS.md)
 - [Figma Design](https://www.figma.com/design/TzWInyJUYNPC1TtWvmVogy/Aura-Wellness-%E2%80%94-Landing-Page-Variants?node-id=59-2&t=q20AdLFWdjr5aKzZ-1)
 - **Loom Videos:**
-  - [Strategy Walkthrough (3 min)](#)
-  - [Technical Architecture Walkthrough (3 min)](#)
+  - [Strategy Walkthrough](#)
+  - [Technical Architecture Walkthrough](#)
 
 ## Tech Stack
 
