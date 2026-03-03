@@ -26,6 +26,8 @@ export default function PostHogProvider({
     pathnameRef.current = pathname;
   }, [pathname]);
 
+  console.log("PostHog Key Loaded:", !!process.env.NEXT_PUBLIC_POSTHOG_KEY);
+
   useEffect(() => {
     initPostHog(() => {
       const currentPath = pathnameRef.current;
