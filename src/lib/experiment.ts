@@ -12,6 +12,7 @@ export function getOrAssignVariant(): VariantId {
 
   // Primary: use PostHog feature flag when key is configured and SDK is ready
   const flag = posthog.getFeatureFlag(POSTHOG_FLAG);
+  console.log("get posthost feature flag", flag);
   if (flag && VARIANT_IDS.includes(flag as VariantId)) {
     return flag as VariantId;
   }

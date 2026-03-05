@@ -36,6 +36,7 @@ export default function PostHogProvider({
         path: currentPath,
         ...(variant && { variant }),
       });
+      console.log("report posthog pageview")
     });
   }, []);
 
