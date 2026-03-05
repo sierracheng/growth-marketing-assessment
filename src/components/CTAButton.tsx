@@ -28,8 +28,11 @@ export default function CTAButton({
 
     captureSignup(variantId, referralCode);
 
-    // Delay so PostHog can flush the event before navigation
+    // Delay so PostHog can flush the event before navigation.
+    // Reset fired before navigating so the component is re-clickable
+    // if the user returns via browser back (Next.js restores from cache).
     setTimeout(() => {
+      fired.current = false;
       window.location.href = getSignupUrl(referralCode);
     }, 500);
   }
