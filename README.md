@@ -35,6 +35,14 @@ To satisfy the requirement of maintaining a single core layout/system without du
 
 The primary conversion metric (`signed_up`) is handled by a custom `<CTAButton />` wrapper that ensures absolute data integrity:
 
+**Live event stream (Activity feed):**
+
+![PostHog Activity Feed](docs/posthog-activity.png)
+
+**A/B test experiment dashboard:**
+
+![PostHog Experiment Dashboard](docs/posthog-experiment.png)
+
 - **Duplicate Prevention:** A `useRef` boolean flag ensures the PostHog event fires exactly once per click, even if the user clicks multiple times before the redirect completes.
 - **Race-Condition Safety:** A 300ms `setTimeout` delay gives PostHog time to flush the event before `window.location.href` triggers the redirect.
 - **Deterministic Routing:** Appends the exact `?referralCode=` defined in the variant config to the final redirect URL (`https://ads.axon.ai/auth/signup`).
