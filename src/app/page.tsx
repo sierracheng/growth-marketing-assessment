@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import type { PostHog } from "posthog-node";
 import { getPostHogServerClient } from "@/lib/posthog-server";
 
@@ -36,12 +36,17 @@ async function fetchVariantFromPostHog(
 
 export default async function Home() {
   const cookieStore = await cookies();
+  const headerStore = await headers();
   const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
 
-  // Use the visitor ID set by middleware — this is the same ID the client
-  // PostHog SDK will be bootstrapped with, so server exposure events and
-  // client pageview/conversion events all share one identity in PostHog.
-  const distinctId = cookieStore.get("aura_vid")?.value ?? crypto.randomUUID();
+  // Use the visitor ID set by middleware. On first visit the cookie isn't in the
+  // request yet, so middleware also forwards it as x-visitor-id request header.
+  // This ensures server exposure events and client pageview/conversion events
+  // always share the same distinct_id in PostHog.
+  const distinctId =
+    cookieStore.get("aura_vid")?.value ??
+    headerStore.get("x-visitor-id") ??
+    crypto.randomUUID();
   console.log("[page/server] Using distinct_id:", distinctId);
 
   const { variant, client } = await fetchVariantFromPostHog(distinctId);

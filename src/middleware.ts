@@ -8,17 +8,25 @@ const VISITOR_COOKIE = "aura_vid";
 // the same distinct_id so experiment exposure events are linked to
 // the same user as pageviews and conversions.
 export function middleware(request: NextRequest) {
-  const response = NextResponse.next();
+  const existingId = request.cookies.get(VISITOR_COOKIE)?.value;
 
-  if (!request.cookies.has(VISITOR_COOKIE)) {
-    const visitorId = crypto.randomUUID();
-    response.cookies.set(VISITOR_COOKIE, visitorId, {
-      httpOnly: false, // must be readable by client-side JS for PostHog bootstrap
-      sameSite: "lax",
-      maxAge: 60 * 60 * 24 * 365, // 1 year
-      path: "/",
-    });
+  if (existingId) {
+    return NextResponse.next();
   }
+
+  // First visit: generate a new visitor ID and forward it as a request header
+  // so page.tsx can read it server-side before the Set-Cookie reaches the browser.
+  const visitorId = crypto.randomUUID();
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-visitor-id", visitorId);
+
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
+  response.cookies.set(VISITOR_COOKIE, visitorId, {
+    httpOnly: false, // must be readable by client-side JS for PostHog bootstrap
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 365, // 1 year
+    path: "/",
+  });
 
   return response;
 }
