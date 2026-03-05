@@ -28,10 +28,10 @@ export default function CTAButton({
 
     captureSignup(variantId, referralCode);
 
-    // Small delay so PostHog can flush the event before navigation
+    // Delay so PostHog can flush the event before navigation
     setTimeout(() => {
       window.location.href = getSignupUrl(referralCode);
-    }, 300);
+    }, 500);
   }
 
   return (
